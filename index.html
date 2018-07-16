@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>return 7 day names with today first</title>
+  <link href="prism/prism.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: helvetica, arial, sans-serif;
+      /* font-size: 1em; */
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Start with today!</h1>
+  <p id="days"></p>
+  <p>
+    A JavaScript function that returns the 7 day names with today first
+  </p>
+  <p>
+    From an answer I originally gave on StackOverflow to <a href="https://stackoverflow.com/a/7316502/123033">JavaScript Array rotate()</a>
+  </p>
+  <pre><code class="language-javascript">
+// returns 7 day names with today first
+function startWith() {
+  const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let today = new Date();
+  let start = today.getDay(); //gets day number
+  if (start == 0) { //if Sunday, days are in order
+      return days
+  }
+  else { //if not Sunday, start days with today
+      return days.slice(start).concat(days.slice(0,start))
+  }
+}
+
+// Example to put the day names in your HTML
+const days = document.getElementById("days");
+days.innerHTML = startWith();
+  </code></pre>
+  <script src="today.js"></script>
+  <script src="prism/prism.js"></script>
+</body>
+</html>
